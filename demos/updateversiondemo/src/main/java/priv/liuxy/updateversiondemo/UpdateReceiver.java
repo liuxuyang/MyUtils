@@ -3,17 +3,13 @@ package priv.liuxy.updateversiondemo;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-
-import java.io.File;
-import java.io.IOException;
 
 import priv.liuxy.utils.LogUtils;
 
 /**
  * @author Liuxy
  *         2015年11月10日10:50:15
- *         <p>
+ *         <p/>
  *         更新操作接受器
  */
 public class UpdateReceiver extends BroadcastReceiver {
@@ -38,31 +34,9 @@ public class UpdateReceiver extends BroadcastReceiver {
                 break;
             case INSTALL_APK:
                 LogUtils.LOGD(TAG, "INSTALL_APK");
-                installAPK(intent);
+                UpdateManager.getInstance().installAPK();
                 break;
             default:
         }
-    }
-
-    /**
-     * 安装文件,使用系统安装器进行安装。
-     *
-     * @param intent
-     */
-    private void installAPK(Intent intent) {
-        String fileName = intent.getStringExtra("fileName");
-        try {
-            String command = "chmod " + 777 + " " + UpdateThread.mCacheUrl + "/" + fileName;
-            LogUtils.LOGD(TAG, "command = " + command);
-            Runtime runtime = Runtime.getRuntime();
-            runtime.exec(command);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Intent i = new Intent();
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.setAction(Intent.ACTION_VIEW);
-        i.setDataAndType(Uri.fromFile(new File(UpdateThread.mCacheUrl + fileName)), "application/vnd.android.package-archive");
-        App.getInstance().startActivity(i);
     }
 }

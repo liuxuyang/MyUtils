@@ -9,8 +9,6 @@ import priv.liuxy.utils.LogUtils;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = LogUtils.makeLogTag(MainActivity.class);
 
-    UpdateManager manager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,11 +18,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (R.id.start == v.getId()) {
-                    if (manager == null) {
-                        manager = new UpdateManager();
-                    }
-                    manager.checkUpdate();
-                    manager.startUpdate();
+                    //UpdateManager.getInstance().checkUpdate();
+                    UpdateManager.getInstance().startUpdate();
                 }
             }
         });

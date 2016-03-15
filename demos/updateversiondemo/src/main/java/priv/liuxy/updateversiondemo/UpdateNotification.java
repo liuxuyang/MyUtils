@@ -5,13 +5,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 import priv.liuxy.utils.LogUtils;
 
 /**
  * Created by Liuxy on 2015/11/9.
- * <p>
+ * <p/>
  * 更新提示栏显示
  */
 public class UpdateNotification {
@@ -37,17 +36,35 @@ public class UpdateNotification {
         mBuilder.setDeleteIntent(PendingIntent.getBroadcast(mContext, UpdateReceiver.CANCEL_DOWNLOAD, intent, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
+    /**
+     * 开始
+     */
+    public void start() {
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher)
+                .setProgress(0, 0, false)
+                .setContentText("准备下载");
+        mNotifyManager.notify(ID, mBuilder.build());
+    }
+
+    /**
+     * 实时下载进度提示
+     *
+     * @param progress
+     */
     public void notify(final int progress) {
         mBuilder.setContentTitle("正在下载")
-                .setContentText(progress + "%")
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .setContentText(progress + "%");
         mBuilder.setProgress(100, progress, false);
 
         mNotifyManager.notify(ID, mBuilder.build());
     }
 
+    /**
+     * 下载完成后显示
+     *
+     * @param fileName
+     */
     public void complete(String fileName) {
-        Log.d("complete->", fileName);
         Intent intent = new Intent();
         intent.setAction("android.intent.action.MY_BROADCAST");
         intent.putExtra(UpdateReceiver.TAG, UpdateReceiver.INSTALL_APK);
@@ -60,12 +77,20 @@ public class UpdateNotification {
         mNotifyManager.notify(ID, mBuilder.build());
     }
 
+    /**
+     * 设置显示的内容
+     *
+     * @param content
+     */
     public void setContent(String content) {
         mBuilder.setContentText(content)
                 .setProgress(0, 0, false);
         mNotifyManager.notify(ID, mBuilder.build());
     }
 
+    /**
+     * 退出
+     */
     public void cancel() {
         mNotifyManager.cancel(ID);
     }

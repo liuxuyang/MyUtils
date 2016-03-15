@@ -18,7 +18,7 @@ import priv.liuxy.utils.StorageUtils;
 
 /**
  * Created by Liuxy on 2016/3/14.
- * <p>
+ * <p/>
  * 更新线程
  */
 public class UpdateThread extends Thread {
@@ -27,8 +27,7 @@ public class UpdateThread extends Thread {
     /**
      * 默认下载保存目录
      */
-    private static final String DEFAULT_CACHE_URL = Environment.getExternalStorageDirectory().getAbsolutePath()
-            + "/suncar/download";
+    private static final String DEFAULT_CACHE_URL = Environment.getExternalStorageDirectory().getAbsolutePath() + "/suncar/download/";
     /**
      * 资源地址
      */
@@ -36,13 +35,17 @@ public class UpdateThread extends Thread {
     /**
      * 本地存储地址
      */
-    public static String mCacheUrl;
+    private String mCacheUrl;
+    /**
+     * 文件名
+     */
+    private String mFileName;
     /**
      * 中断标志
      */
     public static boolean stopMark = false;
     /**
-     *
+     * 状态栏提示
      */
     private UpdateNotification notification;
 
@@ -51,7 +54,7 @@ public class UpdateThread extends Thread {
     }
 
     public UpdateThread(String resUrl, String cacheUrl) {
-        LogUtils.LOGD(TAG, "resUrl=" + resUrl + ",cacheUrl=" + cacheUrl);
+
         if (TextUtils.isEmpty(resUrl)) {
             throw new IllegalArgumentException("资源地址为空");
         }
@@ -60,19 +63,21 @@ public class UpdateThread extends Thread {
         }
 
         this.mResUrl = resUrl;
-        mCacheUrl = cacheUrl;
+        this.mFileName = mResUrl.substring(mResUrl.lastIndexOf("/") + 1);
+        this.mCacheUrl = cacheUrl;
         this.notification = new UpdateNotification();
+
+        if (TextUtils.isEmpty(mFileName)) {
+            throw new IllegalArgumentException("文件名为空");
+        }
+        LogUtils.LOGD(TAG, "resUrl=" + resUrl + ",cacheUrl=" + cacheUrl + ",filename = " + mFileName);
     }
 
     @Override
     public void run() {
-        String fileName = mResUrl.substring(mResUrl.lastIndexOf("/") + 1);
-        LogUtils.LOGD(TAG, "fileName=" + fileName);
-        if (TextUtils.isEmpty(fileName)) {
-            LogUtils.LOGD(TAG, "下载文件文件名为空");
-            return;
-        }
+        //TODO:重构此方法，目前太乱
         try {
+            notification.start();
             URL u = new URL(mResUrl);
             HttpURLConnection conn = (HttpURLConnection) u.openConnection();
             conn.setRequestMethod("GET");
@@ -98,7 +103,7 @@ public class UpdateThread extends Thread {
                 LogUtils.LOGD(TAG, "下载保存目录不存在，创建该目录");
                 dir.mkdirs();
             }
-            File file = new File(dir, fileName);
+            File file = new File(dir, mFileName);
             if (file.exists()) {
                 LogUtils.LOGD(TAG, "覆盖本地同名文件");
                 file.delete();
@@ -140,10 +145,11 @@ public class UpdateThread extends Thread {
             is.close();
             fos.close();
             conn.disconnect();
-            File apk = new File(mCacheUrl + "/" + fileName);
+            File apk = new File(mCacheUrl + mFileName);
             LogUtils.LOGD(TAG, apk.exists() ? "下载完成" : "下载失败");
             if (apk.exists()) {
-                notification.complete(fileName);
+                UpdateManager.getInstance().setPath(mCacheUrl + mFileName);
+                notification.complete(mCacheUrl + mFileName);
                 LogUtils.LOGD(TAG, "下载完成");
             } else {
                 notification.setContent("下载出错了,请稍后再试");
