@@ -1,5 +1,6 @@
 package priv.liuxy.utils;
 
+import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
 
@@ -46,5 +47,22 @@ public class StorageUtils {
             availBlock = statfs.getAvailableBlocks();
         }
         return availBlock * size >= (length + 1024 * 10);
+    }
+
+    /**
+     * 该方法会判断当前sd卡是否存在，然后选择缓存地址
+     *
+     * @param context
+     * @param uniqueName
+     * @return
+     */
+    public static File getDiskCacheDir(Context context, String uniqueName) {
+        String cachePath;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) || !Environment.isExternalStorageRemovable()) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + uniqueName);
     }
 }
