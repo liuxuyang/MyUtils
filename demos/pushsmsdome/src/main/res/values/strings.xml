@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PushSmsDome</string>
+
+    <string name="phone">mobile phone number</string>
+</resources>

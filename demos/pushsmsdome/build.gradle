@@ -5,19 +5,14 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "priv.liuxy.updateversiondemo"
+        applicationId "priv.liuxy.pushsmsdome"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
-        debug {
-            debuggable true
-            minifyEnabled false
-        }
         release {
-            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -28,4 +23,8 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
+    compile project(':utils')
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.okio:okio:1.7.0'
+    compile 'com.j256.ormlite:ormlite-android:4.48'
 }
