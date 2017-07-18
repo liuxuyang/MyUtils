@@ -16,6 +16,7 @@ include 'api'
 include 'services:webservice'
 */
 include ':utils'
+include ':demos:collagedemo'
 include ':demos:updateversiondemo'
 include ':demos:zbardemo'
 include ':demos:pushsmsdemo'

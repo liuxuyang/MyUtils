@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.liuxy.tct.CollageItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tct="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tct:divider_color="@color/collage_child_divide_color"
+    tct:divider_width="@dimen/collage_child_divide_width"
+    tct:empty_background="@color/collage_child_background"
+    tct:index_text_color="@color/collage_child_text_color"
+    tct:index_text_offset_x="@dimen/collage_child_text_offset_x"
+    tct:index_text_offset_y="@dimen/collage_child_text_offset_y"
+    tct:index_text_size="@dimen/collage_child_text_size"/>

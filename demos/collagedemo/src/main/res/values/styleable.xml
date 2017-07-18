@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="collage_layout">
+        <attr name="collage_style" format="enum">
+            <enum name="style_1" value="1"/>
+            <enum name="style_2" value="2"/>
+            <enum name="style_3" value="3"/>
+            <enum name="style_4" value="4"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="zoom_preview_view">
+        <attr name="divider_width" format="dimension"/>
+        <attr name="divider_color" format="color"/>
+        <attr name="index_text_size" format="dimension"/>
+        <attr name="index_text_offset_x" format="dimension"/>
+        <attr name="index_text_offset_y" format="dimension"/>
+        <attr name="index_text_color" format="color"/>
+
+        <attr name="empty_background" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="floating_layout">
+        <attr name="floating_orientation" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="top" value="90"/>
+            <enum name="right" value="180"/>
+            <enum name="bottom" value="270"/>
+        </attr>
+        <attr name="floating_divide" format="dimension"/>
+        <attr name="floating_duration" format="integer"/>
+        <attr name="floating_max_show_count" format="integer"/>
+        <attr name="item_size" format="dimension"/>
+    </declare-styleable>
+
+</resources>
