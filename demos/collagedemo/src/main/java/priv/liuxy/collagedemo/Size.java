@@ -1,4 +1,4 @@
-package com.liuxy.tct;
+package priv.liuxy.collagedemo;
 
 /**
  * Created by xuyang.liu on 17-6-29.

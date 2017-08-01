@@ -1,4 +1,4 @@
-package com.liuxy.tct;
+package priv.liuxy.collagedemo;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -246,7 +246,7 @@ public class FloatingLayout extends LinearLayout {
                 hScrollView.setHorizontalScrollBarEnabled(false);
                 hScrollView.addView(linearLayout);
                 addView(hScrollView);
-
+                Log.d(TAG,"mDivide = " + mDivide);
                 itemParams.setMargins(mDivide / 2, 0, mDivide / 2, 0);
                 break;
             case 90:

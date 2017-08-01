@@ -1,8 +1,8 @@
-package com.liuxy.tct.templates;
+package priv.liuxy.collagedemo.templates;
 
 import android.graphics.Rect;
 
-import com.liuxy.tct.Size;
+import priv.liuxy.collagedemo.Size;
 
 import java.util.ArrayList;
 import java.util.List;

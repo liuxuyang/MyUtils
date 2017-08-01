@@ -1,4 +1,4 @@
-package com.liuxy.tct;
+package priv.liuxy.collagedemo;
 
 import android.content.Context;
 import android.content.res.TypedArray;

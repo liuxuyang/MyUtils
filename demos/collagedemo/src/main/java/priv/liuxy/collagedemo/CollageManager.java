@@ -1,4 +1,4 @@
-package com.liuxy.tct;
+package priv.liuxy.collagedemo;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

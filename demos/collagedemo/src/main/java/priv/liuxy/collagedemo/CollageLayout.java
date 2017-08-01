@@ -1,4 +1,4 @@
-package com.liuxy.tct;
+package priv.liuxy.collagedemo;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -17,11 +17,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.liuxy.tct.templates.CollageStyle1;
-import com.liuxy.tct.templates.CollageStyle2;
-import com.liuxy.tct.templates.CollageStyle3;
-import com.liuxy.tct.templates.CollageStyle4;
-import com.liuxy.tct.templates.CollageTemplate;
+import priv.liuxy.collagedemo.templates.CollageStyle1;
+import priv.liuxy.collagedemo.templates.CollageStyle2;
+import priv.liuxy.collagedemo.templates.CollageStyle3;
+import priv.liuxy.collagedemo.templates.CollageStyle4;
+import priv.liuxy.collagedemo.templates.CollageTemplate;
 
 /**
  * Created by xuyang.liu on 17-6-28.

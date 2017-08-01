@@ -1,4 +1,4 @@
-package com.liuxy.tct;
+package priv.liuxy.collagedemo;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.liuxy.tct.templates.CollageStyle1;
-import com.liuxy.tct.templates.CollageStyle2;
-import com.liuxy.tct.templates.CollageStyle3;
-import com.liuxy.tct.templates.CollageStyle4;
+import priv.liuxy.collagedemo.templates.CollageStyle1;
+import priv.liuxy.collagedemo.templates.CollageStyle2;
+import priv.liuxy.collagedemo.templates.CollageStyle3;
+import priv.liuxy.collagedemo.templates.CollageStyle4;
 
 public class MainActivity extends AppCompatActivity
         implements CollageLayout.CollageListener,
